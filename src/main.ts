@@ -44,13 +44,13 @@ class VectorSpace<T extends VectorTrait> implements IVectorSpace<T> {
     radius: number
   ): boolean {
     // This might be better to do in a standard for..in loop and break if one dimension is a match
-    const distance = location1.reduce(
+    const distanceSquared = location1.reduce(
       (sum, coordinates, dimension) =>
         sum + (coordinates - location2[dimension]) ** 2,
       0
     );
 
-    return distance < radius;
+    return distanceSquared < radius ** 2;
   }
 }
 
